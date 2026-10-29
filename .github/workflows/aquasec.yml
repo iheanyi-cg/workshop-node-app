@@ -103,7 +103,7 @@ jobs:
           docker run -e BUILD_JOB_NAME=${{ env.IMAGE_NAME}} -e BUILD_NUMBER=${{ env.IMAGE_TAG }} --rm -v /var/run/docker.sock:/var/run/docker.sock registry.aquasec.com/scanner:latest-saas scan --host ${{ secrets.AQUA_HOST_SUPERS }} --local ${{ env.DOCKER_REPOSITORY}}/${{ env.IMAGE_NAME}}:${{ env.IMAGE_TAG}} --token ${{ secrets.AQUA_TOKEN }} --layer-vulnerabilities --no-verify --sarif > results.sarif
 
       - name: Upload SARIF report
-        uses: github/codeql-action/upload-sarif@v3
+        uses: chainguard-actions/github-codeql-action/upload-sarif@02c8b1fece55d94b9fc8de711efd251dad82618c # v3
         with:
           sarif_file: results.sarif
   
